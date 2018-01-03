@@ -1,10 +1,10 @@
 class Timer {
-	constructor(node, alarm) {
+	constructor(div, alarm) {
 		this.setTime = 10;
 		this.ticking = false;
 		this.startTime = Date.now();
 		this.lastTick = Date.now();
-		this.node = node;
+		this.div = div;
 		this.alarm = alarm;
 		
 		this.set();
@@ -44,27 +44,27 @@ class Timer {
 		}
 	}
 	display() {
-		this.node.innerText = this.time;
+		this.div.innerText = this.time;
 	}
 	soundAlarm() {
 		this.alarm.play(); 
 	}
 }
 
-Number.prototype.toHHMMSS = function() {
-	return this.toString().toHHMMSS();
-}
+// Number.prototype.toHHMMSS = function() {
+// 	return this.toString().toHHMMSS();
+// }
 
-String.prototype.toHHMMSS = function() {
-  let s = parseInt(this, 10);
-  let h = Math.floor(s / 3600);
-  let m = Math.floor((s - (h * 3600)) / 60);
-  s = s - (h * 3600) - (m * 60);
-  if ( h < 10 ) { h = `0${h}`; }
-  if ( m < 10 ) { m = `0${m}`; }
-  if ( s < 10 ) { s = `0${s}`; }
-  return `${h}:${m}:${s}`;
-}
+// String.prototype.toHHMMSS = function() {
+//   let s = parseInt(this, 10);
+//   let h = Math.floor(s / 3600);
+//   let m = Math.floor((s - (h * 3600)) / 60);
+//   s = s - (h * 3600) - (m * 60);
+//   if ( h < 10 ) { h = `0${h}`; }
+//   if ( m < 10 ) { m = `0${m}`; }
+//   if ( s < 10 ) { s = `0${s}`; }
+//   return `${h}:${m}:${s}`;
+// }
 
 // // // // // // // // // // // // // // // // // // // //
 
@@ -93,48 +93,36 @@ function makeTimerEditable() {
 	timerDiv.setAttribute('contenteditable', 'true');
 }
 
-String.prototype.replaceAll = function(needle, haystack) {
-    var alteredString = this;
-    return alteredString.split(needle).join(haystack);
-};
-
-String.prototype.reverse = function() {
-	let arr = this.split('');
-	arr.reverse();
-	return arr.join('')
-};
-function stringToTime(str) {
-	let newStr = str.replaceAll(':', '');
-	console.log(newStr);
-	console.log(newStr.reverse().match(/.{1,2}/g).reverse().join(':'));
-}
-
 // // // // // // // // // // // // // // // // // // // //
 
 timer.display();
-// update every 1/10 seconds
+// update every 0.1 seconds
 setInterval(function() {
 	timer.update();
 }, 100);
 
+// allow clicking into time div to reset
 timerDiv.addEventListener('click', function() {
-	console.log('click!');
 	makeTimerEditable();
 });
-
+// save entered time on click outside of timer div
 timerDiv.addEventListener('focusout', function() {
-	console.log("focusout!");
 	let text = timerDiv.innerText.replace(/\D/g,'');
 	timerDiv.innerText = text;
 	timer.set(parseInt(text));
 });
 
-// timerDiv.addEventListener('keyup', function() {
-// 	let text = timerDiv.innerText;
-// 	// if (text.length % 2 == 0) {
-// 	// 	timerDiv.innerText += ':';
-// 	// }
-// 	console.log('up!');
-// 	// stringToTime(timerDiv.innerText);
-// 	timerDiv.innerText.toString();
-// });
+// String.prototype.replaceAll = function(needle, haystack) {
+//     var alteredString = this;
+//     return alteredString.split(needle).join(haystack);
+// };
+// String.prototype.reverse = function() {
+// 	let arr = this.split('');
+// 	arr.reverse();
+// 	return arr.join('')
+// };
+// function stringToTime(str) {
+// 	let newStr = str.replaceAll(':', '');
+// 	console.log(newStr);
+// 	console.log(newStr.reverse().match(/.{1,2}/g).reverse().join(':'));
+// }
