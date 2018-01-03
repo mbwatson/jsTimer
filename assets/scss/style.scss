@@ -1,0 +1,40 @@
+:root {
+	--bg-color: #3181a8;
+	--time-color: #51a1c8;
+	--ui-color: #fff;
+}
+body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden; 
+  background-color: var(--bg-color);
+  font-family: "Ubuntu", sans-serif;
+  font-size: 36pt;
+  color: var(--time-color);
+}
+// * { border: 1px solid #cde; }
+.timer {
+	text-align: center;
+	font-weight: bold;
+	font-size: 300%;
+}
+.ui {
+	text-align: center;
+	button {
+		background-color: transparent;
+		margin: 0.25em;
+		border: 0;
+		opacity: 0.5;
+		cursor: pointer;
+		color: var(--ui-color);
+		transition: opacity 500ms ease;
+	}
+	button:hover {
+		opacity: 1;
+	}
+}
+@media (max-width: 600px) {
+	body {
+		font-size: 18pt;
+	}
+}
