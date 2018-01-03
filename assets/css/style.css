@@ -12,23 +12,23 @@ body {
   font-size: 36pt;
   color: var(--time-color); }
 
-.timer {
+#timer {
   text-align: center;
   font-weight: bold;
   font-size: 300%; }
-
-.ui {
-  text-align: center; }
-  .ui button {
-    background-color: transparent;
-    margin: 0.25em;
-    border: 0;
-    opacity: 0.5;
-    cursor: pointer;
-    color: var(--ui-color);
-    transition: opacity 500ms ease; }
-  .ui button:hover {
-    opacity: 1; }
+  #timer .ui {
+    font-size: 30%;
+    text-align: center; }
+    #timer .ui button {
+      background-color: transparent;
+      margin: 0.25em;
+      border: 0;
+      opacity: 0.5;
+      cursor: pointer;
+      color: var(--ui-color);
+      transition: opacity 500ms ease; }
+    #timer .ui button:hover {
+      opacity: 1; }
 
 @media (max-width: 600px) {
   body {

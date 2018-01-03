@@ -8,12 +8,17 @@
   <link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 <body>
+  <audio id="myAudio">
+    <source src="assets/sounds/alarm.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+  </audio>
   <div id="wrapper">
-    <div class="timer">
-    </div>
-    <div class="ui">
-      <button onclick="playPauseTimer()"><i class="fa fa-play"></i></button>
-      <button onclick="resetTimer()"><i class="fa fa-undo"></i></button>
+    <div id="timer">
+      <div class="time"></div>
+      <div class="ui">
+        <button onclick="playPauseTimer()"><i class="fa fa-play"></i></button>
+        <button onclick="resetTimer()"><i class="fa fa-undo"></i></button>
+      </div>
     </div>
   </div>
   <script src="https://use.fontawesome.com/a285db6a94.js"></script>
