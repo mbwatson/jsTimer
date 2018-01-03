@@ -101,15 +101,32 @@ setInterval(function() {
 	timer.update();
 }, 100);
 
+// character code test for numbers
+function isANumberCode(code) {
+	return ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)); 
+}
+// save time currently showing as text of time div
+function saveTime() {
+	let text = timerDiv.innerText.replace(/\D/g,'');
+	timerDiv.innerText = text;
+	timer.set(parseInt(text));
+}
 // allow clicking into time div to reset
 timerDiv.addEventListener('click', function() {
 	makeTimerEditable();
 });
-// save entered time on click outside of timer div
-timerDiv.addEventListener('focusout', function() {
-	let text = timerDiv.innerText.replace(/\D/g,'');
-	timerDiv.innerText = text;
-	timer.set(parseInt(text));
+// save entered time on (1) click outside of timer div or (2) pressing enter
+timerDiv.addEventListener('focusout', saveTime);
+timerDiv.addEventListener('keypress', function(e) {
+	console.log(e);
+	// if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) { 
+	if (!isANumberCode(e.which)) {
+		e.preventDefault();
+		if (e.keyCode == 13) {
+			saveTime();
+	    this.blur();
+		} 
+	}
 });
 
 // String.prototype.replaceAll = function(needle, haystack) {
