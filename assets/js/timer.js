@@ -72,6 +72,7 @@ const timerDiv = document.querySelector('#timer .time');
 const alarm = document.getElementById("myAudio"); 
 const timer = new Timer(timerDiv, alarm);
 const playButtonIcon = document.querySelector('#timer .ui button .fa-play');
+const allowedNonNumericKeyCodes = [8, 13, 17, 37, 38, 39, 40, 46];
 
 function playPauseTimer() {
 	if (playButtonIcon.classList.contains('fa-play')) {
@@ -101,10 +102,9 @@ setInterval(function() {
 	timer.update();
 }, 100);
 
-// character code test for numbers
-function isANumberCode(code) {
-	return ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)); 
-}
+// character code tests
+function isANumberCode(code) { return ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)); }
+function isALetterCode(code) { return (65 <= code && code<= 90); }
 // save time currently showing as text of time div
 function saveTime() {
 	let text = timerDiv.innerText.replace(/\D/g,'');
@@ -114,18 +114,24 @@ function saveTime() {
 // allow clicking into time div to reset
 timerDiv.addEventListener('click', function() {
 	makeTimerEditable();
+	this.focus();
 });
 // save entered time on (1) click outside of timer div or (2) pressing enter
 timerDiv.addEventListener('focusout', saveTime);
-timerDiv.addEventListener('keypress', function(e) {
-	console.log(e);
-	// if ((e.which >= 48 && e.which <= 57) || (e.which >= 96 && e.which <= 105)) { 
-	if (!isANumberCode(e.which)) {
-		e.preventDefault();
+timerDiv.addEventListener('keydown', function(e) {
+	// was a number key or an allowed non-numeric key pressed?
+	if (isANumberCode(e.which) || allowedNonNumericKeyCodes.includes(e.which)) {
+		// was Enter pressed?
 		if (e.keyCode == 13) {
+			e.preventDefault();
 			saveTime();
 	    this.blur();
-		} 
+		}
+	} else {
+		// was ctrl-A (not) pressed?
+		if (e.which != 65 || e.ctrlKey != true) { 
+			e.preventDefault();
+		}
 	}
 });
 
