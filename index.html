@@ -16,12 +16,24 @@
     <div id="timer">
       <div class="time"></div>
       <div class="ui">
-        <button onclick="playPauseTimer()"><i class="fa fa-play"></i></button>
-        <button onclick="resetTimer()"><i class="fa fa-undo"></i></button>
+        <button onclick="timer.toggle()" class="playPause"><i class="fa fa-play"></i></button>
+        <button onclick="timer.reset()" class="reset"><i class="fa fa-undo"></i></button>
       </div>
+    </div>
+    <div id="details">
+      <p>
+        The timer will count down to zero from the displayed number of seconds
+        when the play <i class="fa fa-play"></i> button is pressed.
+        The reset <i class="fa fa-undo"></i> button sets the timer to time at which it was last set.
+        A brief noise will sound when the timer reaches zero.
+        Click the time to edit it in place.
+        Clicking off of the the time or pressing &lt;Enter&gt; sets the currently displayed time.
+      </p>
     </div>
   </div>
   <script src="https://use.fontawesome.com/a285db6a94.js"></script>
+  <script src="assets/js/clock.js"></script>
   <script src="assets/js/timer.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

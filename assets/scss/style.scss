@@ -34,6 +34,19 @@ body {
 		}
 	}
 }
+#graphic {
+	margin: auto;
+	width: 50%;
+	text-align: center;
+}
+#details {
+	margin: auto;
+	margin-top: 100px;
+	width: 50%;
+	font-size: 35%;
+	color: #334;
+	opacity: 0.5;
+}
 @media (max-width: 600px) {
 	body {
 		font-size: 18pt;
