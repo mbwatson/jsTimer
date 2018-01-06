@@ -47,6 +47,19 @@ body {
 	color: #334;
 	opacity: 0.5;
 }
+footer {
+	color: #eef;
+	font-size: 25%;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translate(-50%);
+	text-align: center;
+	opacity: 0.5;
+	a {
+		color: #fff;
+	}
+}
 @media (max-width: 600px) {
 	body {
 		font-size: 18pt;
