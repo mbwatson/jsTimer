@@ -9,7 +9,7 @@ body {
 	overflow: hidden; 
   background-color: var(--bg-color);
   font-family: "Ubuntu", sans-serif;
-  font-size: 36pt;
+  font-size: 64pt;
   color: var(--time-color);
 }
 // * { border: 1px solid #cde; }
@@ -58,6 +58,11 @@ footer {
 	opacity: 0.5;
 	a {
 		color: #fff;
+	}
+}
+@media (max-width: 960px) {
+	body {
+		font-size: 36pt;
 	}
 }
 @media (max-width: 600px) {
