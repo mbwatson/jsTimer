@@ -3,7 +3,6 @@
 ## About
 
 Fully object-oriented timer built with Vanilla JS.
-There are graphics to accompany the timer in the works.
 
 ## Operation
 
